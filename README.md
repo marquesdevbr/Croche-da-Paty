@@ -28,29 +28,31 @@ Além disso, o projeto serve como oportunidade para colocar em prática conhecim
 
 Atualmente, o site conta com:
 
-- 🧶 Identidade visual voltada para artesanato
-- 🏠 Seção principal de apresentação
-- 🛍️ Área de produtos em destaque
-- 💰 Exibição de preços
-- ❤️ Seção sobre o trabalho artesanal
-- 📱 Estrutura preparada para diferentes tamanhos de tela
-- 🔗 Área destinada aos canais de contato
+- 🧶 Identidade visual própria, com logo oficial e favicon
+- 🏠 Site dividido em múltiplas páginas (Início, Produtos, Sobre, Galeria, Contato)
+- 📱 Menu mobile com botão hamburger
+- 🛍️ Catálogo de produtos com filtro por categoria (Tapetes, Passadeiras, Decoração, Personalizados)
+- 📄 Página dinâmica de produto (`produto.html?id=...`), que carrega os dados a partir de um único arquivo
+- 💬 Botão de pedido pelo WhatsApp, com mensagem preenchida automaticamente com o nome do produto
+- 🖼️ Galeria com lightbox (clique para ampliar imagem) em JavaScript puro
+- 📅 Ano do copyright no rodapé gerado automaticamente
 - 🎨 Design com foco em simplicidade, elegância e aconchego
-- ✨ Efeitos visuais e animações utilizando CSS
+- ♻️ Estrutura pensada para facilitar manutenção e adição de novos produtos
 
 ---
 
 ## 🛍️ Produtos
 
-O projeto apresenta exemplos de produtos artesanais, como:
+O catálogo é alimentado por um arquivo central (`produtos.js`), onde cada produto tem nome, categoria, preço, tamanho, descrição, cores e etiqueta (ex: "Mais vendido", "Exclusivo").
+
+Atualmente estão cadastrados produtos de **demonstração**, como:
 
 - 🌸 Tapete Floral
 - 🤎 Passadeira Elegance
 - 🧶 Tapete Redondo
+- 🎁 Conjunto Personalizado
 
-Os produtos podem ser apresentados com informações como nome, descrição e preço.
-
-A estrutura foi desenvolvida de forma que novos produtos possam ser adicionados futuramente.
+Esses dados serão substituídos pelos produtos reais assim que estiverem disponíveis. A estrutura já foi pensada para isso: basta adicionar um novo item no `produtos.js` que ele aparece automaticamente no site (Home, catálogo e página de detalhes).
 
 ---
 
@@ -64,19 +66,17 @@ A identidade visual do site foi pensada para transmitir uma sensação de:
 - Simplicidade
 - Cuidado
 
-O projeto utiliza uma combinação de tons neutros e terrosos, juntamente com tipografias escolhidas para combinar com a proposta artesanal.
+O site utiliza a logo oficial da marca (novelo de linha, gancho de crochê e coração), com uma paleta de cores extraída diretamente dela — tons de rosa/coral e marrom — combinada com tipografia Playfair Display (títulos) e Poppins (corpo do texto).
 
 ---
 
 ## 🛠️ Tecnologias utilizadas
 
 - HTML5
-- CSS3
+- CSS3 (Grid, Flexbox, variáveis de layout, animações)
+- JavaScript puro (sem frameworks ou bibliotecas)
 - Google Fonts
-- CSS Grid
-- CSS Flexbox
-- CSS Animations
-- Design responsivo
+- Design responsivo (mobile-first)
 
 ---
 
@@ -84,10 +84,23 @@ O projeto utiliza uma combinação de tons neutros e terrosos, juntamente com ti
 
 ```text
 Crochê da Paty/
-├── index.html
-├── style.css
+├── index.html          → Página inicial
+├── produtos.html        → Catálogo com filtro por categoria
+├── produto.html         → Página dinâmica de detalhes do produto
+├── sobre.html           → História da marca e processo
+├── galeria.html          → Galeria de fotos com lightbox
+├── contato.html          → Contato (WhatsApp e Instagram)
+│
+├── style.css             → Estilos do site inteiro
+├── script.js              → Menu mobile, cards, filtro, lightbox, WhatsApp
+├── produtos.js             → Dados dos produtos e funções de acesso
+│
+├── assets/
+│   ├── images/            → Logo e imagens gerais
+│   └── icons/               → Favicon
+│
 └── README.md
-````
+```
 
 ---
 
@@ -115,12 +128,13 @@ Também é possível utilizar uma extensão como o **Live Server** no Visual Stu
 
 O desenvolvimento do Crochê da Paty permitiu praticar conceitos importantes de desenvolvimento web, como:
 
-* Estruturação de páginas com HTML
-* Organização de estilos com CSS
-* Criação de layouts responsivos
-* Utilização de Flexbox e CSS Grid
+* Estruturação de um site com múltiplas páginas e componentes reaproveitados (header/footer)
+* Organização de dados em JavaScript (arrays de objetos e funções de acesso)
+* Manipulação do DOM para renderizar conteúdo dinamicamente
+* Criação de filtros e de uma página de detalhes dinâmica via query string
+* Criação de layouts responsivos com Flexbox e CSS Grid
 * Tipografia e identidade visual
-* Efeitos de hover e transições
+* Efeitos de hover, transições e um lightbox em JavaScript puro
 * Organização de projetos web
 * Versionamento utilizando Git e GitHub
 
@@ -130,14 +144,12 @@ O desenvolvimento do Crochê da Paty permitiu praticar conceitos importantes de 
 
 Algumas melhorias planejadas para futuras versões:
 
-* [ ] Adicionar links funcionais para contato
-* [ ] Adicionar catálogo completo de produtos
-* [ ] Adicionar imagens reais dos produtos
-* [ ] Criar uma seção "Sobre"
-* [ ] Melhorar a navegação entre as seções
-* [ ] Adicionar integração com WhatsApp
-* [ ] Adicionar integração com Instagram
-* [ ] Aprimorar a experiência em dispositivos móveis
+* [ ] Adicionar o número real do WhatsApp
+* [ ] Adicionar o link real do Instagram
+* [ ] Adicionar a história real da Paty na página Sobre
+* [ ] Substituir os produtos de demonstração pelos produtos reais
+* [ ] Adicionar fotos reais dos produtos e da galeria
+* [ ] Avaliar um bot de atendimento no WhatsApp para agilizar pedidos
 
 ---
 
