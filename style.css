@@ -204,6 +204,36 @@ font-weight:bold;
 margin:15px 0;
 }
 
+.detalhe-produto{
+display:flex;
+gap:50px;
+flex-wrap:wrap;
+align-items:flex-start;
+}
+
+.detalhe-produto img{
+flex:1 1 400px;
+max-width:500px;
+border-radius:20px;
+box-shadow:0 10px 25px rgba(0,0,0,.08);
+}
+
+.detalhe-info{
+flex:1 1 350px;
+}
+
+.detalhe-info p{
+margin-bottom:12px;
+line-height:1.7;
+}
+
+.detalhe-categoria{
+text-transform:capitalize;
+color:#9c8a80;
+font-weight:600;
+margin-bottom:5px;
+}
+
 footer{
 background:#4a3b32;
 color:white;

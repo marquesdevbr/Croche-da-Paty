@@ -1,28 +1,35 @@
 // ==================================================
 // CROCHÊ DA PATY — script.js
 // ==================================================
-// Cuida do menu mobile (hamburger) e da renderização
-// dos cards de produto a partir dos dados definidos
-// em produtos.js. Outras funcionalidades (filtro por
-// categoria, lightbox da galeria) serão adicionadas
-// aqui em etapas futuras.
+// Cuida do menu mobile (hamburger), da renderização
+// dos cards de produto (Home e catálogo), do filtro
+// por categoria e da página dinâmica de produto,
+// todos usando os dados de produtos.js.
+// A lightbox da galeria será adicionada aqui em uma
+// etapa futura.
 // ==================================================
+
+
+// ---------- WhatsApp ----------
+
+// Número usado nos links de pedido. Formato: 55 + DDD + número, sem espaços/símbolos.
+const WHATSAPP_NUMERO = "[INSERIR NÚMERO DO WHATSAPP]";
+
+// Monta o link do WhatsApp com uma mensagem já preenchida com o nome do produto
+function gerarLinkWhatsApp(produto) {
+    const mensagem = `Olá! Vi o ${produto.nome} no site Crochê da Paty e gostaria de saber mais informações. 😊`;
+    return `https://wa.me/${WHATSAPP_NUMERO}?text=${encodeURIComponent(mensagem)}`;
+}
 
 
 // ---------- Cards de produto ----------
 
-// Monta o HTML de um card. "contexto" define o botão:
-// "destaque" (Home) leva ao catálogo completo;
-// "catalogo" (produtos.html) leva direto ao WhatsApp.
-function criarCardProduto(produto, contexto) {
+// Monta o HTML de um card. O botão sempre leva à página de detalhes do produto.
+function criarCardProduto(produto) {
 
     const etiquetaHtml = produto.etiqueta
         ? `<div class="etiqueta">${produto.etiqueta}</div>`
         : "";
-
-    const botaoHtml = contexto === "destaque"
-        ? `<a class="btn" href="produtos.html">Ver detalhes</a>`
-        : `<a class="btn" href="[INSERIR LINK DO WHATSAPP]">Comprar</a>`;
 
     return `
         <div class="card">
@@ -32,30 +39,30 @@ function criarCardProduto(produto, contexto) {
                 <h3>${produto.nome}</h3>
                 <p>${produto.descricao}</p>
                 <div class="preco">${produto.preco}</div>
-                ${botaoHtml}
+                <a class="btn" href="produto.html?id=${produto.id}">Ver detalhes</a>
             </div>
         </div>
     `;
 }
 
 // Renderiza uma lista de produtos dentro de um container pelo id
-function renderizarProdutos(lista, containerId, contexto) {
+function renderizarProdutos(lista, containerId) {
     const container = document.getElementById(containerId);
     if (!container) return;
 
-    container.innerHTML = lista.map((produto) => criarCardProduto(produto, contexto)).join("");
+    container.innerHTML = lista.map((produto) => criarCardProduto(produto)).join("");
 }
 
 // Se a página tiver o container de destaques (Home), preenche com listarDestaques()
 const containerDestaque = document.getElementById("produtos-destaque");
 if (containerDestaque && typeof listarDestaques === "function") {
-    renderizarProdutos(listarDestaques(), "produtos-destaque", "destaque");
+    renderizarProdutos(listarDestaques(), "produtos-destaque");
 }
 
 // Se a página tiver o container do catálogo completo (produtos.html), preenche com listarProdutos()
 const containerCatalogo = document.getElementById("produtos-lista");
 if (containerCatalogo && typeof listarProdutos === "function") {
-    renderizarProdutos(listarProdutos(), "produtos-lista", "catalogo");
+    renderizarProdutos(listarProdutos(), "produtos-lista");
 }
 
 
@@ -73,9 +80,51 @@ botoesFiltro.forEach((botao) => {
         // Filtra e renderiza de novo o catálogo
         const categoria = botao.dataset.categoria;
         const produtosFiltrados = filtrarPorCategoria(categoria);
-        renderizarProdutos(produtosFiltrados, "produtos-lista", "catalogo");
+        renderizarProdutos(produtosFiltrados, "produtos-lista");
     });
 });
+
+
+// ---------- Página de detalhes do produto ----------
+
+const containerDetalhe = document.getElementById("produto-detalhe");
+
+if (containerDetalhe) {
+
+    const parametros = new URLSearchParams(window.location.search);
+    const idProduto = parametros.get("id");
+    const produto = typeof buscarProdutoPorId === "function" ? buscarProdutoPorId(idProduto) : null;
+
+    if (produto) {
+
+        const disponibilidade = produto.status === "disponivel" ? "Disponível" : "Indisponível no momento";
+        const personalizavel = produto.personalizado ? "Sim, esta peça aceita personalização." : "Esta peça não aceita personalização.";
+
+        containerDetalhe.innerHTML = `
+            <img src="${produto.imagem}" alt="${produto.nome}">
+            <div class="detalhe-info">
+                <p class="detalhe-categoria">${produto.categoria}</p>
+                <h2>${produto.nome}</h2>
+                <div class="preco">${produto.preco}</div>
+                <p>${produto.descricao}</p>
+                <p><strong>Tamanho:</strong> ${produto.tamanho}</p>
+                <p><strong>Cores disponíveis:</strong> ${produto.cores.join(", ")}</p>
+                <p><strong>Disponibilidade:</strong> ${disponibilidade}</p>
+                <p>${personalizavel}</p>
+                <a class="btn" href="${gerarLinkWhatsApp(produto)}" target="_blank" rel="noopener">Fazer pedido pelo WhatsApp</a>
+            </div>
+        `;
+
+    } else {
+
+        containerDetalhe.innerHTML = `
+            <p style="text-align:center; width:100%;">
+                Produto não encontrado. <a href="produtos.html" style="color:#b07d52; font-weight:600;">Voltar ao catálogo</a>
+            </p>
+        `;
+
+    }
+}
 
 
 // ---------- Menu mobile ----------
