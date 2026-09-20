@@ -40,9 +40,17 @@
 
         <h2 class="titulo">Nossos Produtos</h2>
 
-        <p style="text-align:center; max-width:600px; margin:-30px auto 50px;">
+        <p style="text-align:center; max-width:600px; margin:-30px auto 40px;">
             Peças feitas à mão para deixar seu lar ainda mais aconchegante.
         </p>
+
+        <div class="filtros">
+            <button class="filtro-btn ativo" data-categoria="todos">Todos</button>
+            <button class="filtro-btn" data-categoria="tapetes">Tapetes</button>
+            <button class="filtro-btn" data-categoria="passadeiras">Passadeiras</button>
+            <button class="filtro-btn" data-categoria="decoracao">Decoração</button>
+            <button class="filtro-btn" data-categoria="personalizados">Personalizados</button>
+        </div>
 
         <!-- Preenchido dinamicamente pelo script.js, com os dados de produtos.js -->
         <div class="produtos" id="produtos-lista"></div>

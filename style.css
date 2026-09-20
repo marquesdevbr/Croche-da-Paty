@@ -128,6 +128,35 @@ grid-template-columns:repeat(auto-fit,minmax(250px,1fr));
 gap:30px;
 }
 
+.filtros{
+display:flex;
+justify-content:center;
+flex-wrap:wrap;
+gap:12px;
+margin-bottom:40px;
+}
+
+.filtro-btn{
+padding:10px 22px;
+border:1.5px solid #b07d52;
+border-radius:50px;
+background:transparent;
+color:#b07d52;
+font-family:'Poppins',sans-serif;
+font-weight:600;
+cursor:pointer;
+transition:.3s;
+}
+
+.filtro-btn:hover{
+background:#f1e2d4;
+}
+
+.filtro-btn.ativo{
+background:#b07d52;
+color:white;
+}
+
 .card{
 position:relative;
 background:white;

@@ -59,6 +59,25 @@ if (containerCatalogo && typeof listarProdutos === "function") {
 }
 
 
+// ---------- Filtro por categoria ----------
+
+const botoesFiltro = document.querySelectorAll(".filtro-btn");
+
+botoesFiltro.forEach((botao) => {
+    botao.addEventListener("click", () => {
+
+        // Marca visualmente qual botão está ativo
+        botoesFiltro.forEach((b) => b.classList.remove("ativo"));
+        botao.classList.add("ativo");
+
+        // Filtra e renderiza de novo o catálogo
+        const categoria = botao.dataset.categoria;
+        const produtosFiltrados = filtrarPorCategoria(categoria);
+        renderizarProdutos(produtosFiltrados, "produtos-lista", "catalogo");
+    });
+});
+
+
 // ---------- Menu mobile ----------
 
 const menuToggle = document.querySelector('.menu-toggle');
