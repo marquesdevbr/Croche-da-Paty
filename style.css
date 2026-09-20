@@ -129,11 +129,25 @@ gap:30px;
 }
 
 .card{
+position:relative;
 background:white;
 border-radius:20px;
 overflow:hidden;
 box-shadow:0 10px 25px rgba(0,0,0,.08);
 transition:.3s;
+}
+
+.etiqueta{
+position:absolute;
+top:15px;
+left:15px;
+background:#b07d52;
+color:white;
+font-size:12px;
+font-weight:600;
+padding:5px 12px;
+border-radius:50px;
+z-index:2;
 }
 
 .card:hover{
