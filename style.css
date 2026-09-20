@@ -7,7 +7,7 @@ font-family:'Poppins',sans-serif;
 
 body{
 background:#f8f4ef;
-color:#4a3b32;
+color:#4E2E1D;
 }
 
 header{
@@ -24,20 +24,26 @@ top:0;
 z-index:10;
 }
 
-header h1{
-font-family:'Playfair Display',serif;
+.logo{
+line-height:0;
+}
+
+.logo-img{
+height:64px;
+width:auto;
+display:block;
 }
 
 nav a{
 text-decoration:none;
-color:#4a3b32;
+color:#4E2E1D;
 margin-left:25px;
 font-weight:600;
 transition:.3s;
 }
 
 nav a:hover{
-color:#b07d52;
+color:#E8897C;
 }
 
 .menu-toggle{
@@ -52,7 +58,7 @@ justify-content:space-between;
 display:block;
 height:3px;
 width:100%;
-background:#4a3b32;
+background:#4E2E1D;
 border-radius:2px;
 transition:.3s;
 }
@@ -99,7 +105,7 @@ margin:auto;
 display:inline-block;
 margin-top:35px;
 padding:15px 35px;
-background:#b07d52;
+background:#E8897C;
 color:white;
 text-decoration:none;
 border-radius:50px;
@@ -138,10 +144,10 @@ margin-bottom:40px;
 
 .filtro-btn{
 padding:10px 22px;
-border:1.5px solid #b07d52;
+border:1.5px solid #E8897C;
 border-radius:50px;
 background:transparent;
-color:#b07d52;
+color:#E8897C;
 font-family:'Poppins',sans-serif;
 font-weight:600;
 cursor:pointer;
@@ -149,11 +155,11 @@ transition:.3s;
 }
 
 .filtro-btn:hover{
-background:#f1e2d4;
+background:#FBE4E0;
 }
 
 .filtro-btn.ativo{
-background:#b07d52;
+background:#E8897C;
 color:white;
 }
 
@@ -170,7 +176,7 @@ transition:.3s;
 position:absolute;
 top:15px;
 left:15px;
-background:#b07d52;
+background:#E8897C;
 color:white;
 font-size:12px;
 font-weight:600;
@@ -198,7 +204,7 @@ margin-bottom:10px;
 }
 
 .preco{
-color:#b07d52;
+color:#E8897C;
 font-size:22px;
 font-weight:bold;
 margin:15px 0;
@@ -235,7 +241,7 @@ margin-bottom:5px;
 }
 
 footer{
-background:#4a3b32;
+background:#4E2E1D;
 color:white;
 text-align:center;
 padding:30px;
@@ -247,7 +253,7 @@ text-decoration:none;
 }
 
 footer a:hover{
-color:#e3c9b3;
+color:#F6C9C1;
 }
 
 .footer-copy{
@@ -321,6 +327,10 @@ cursor:pointer;
 
     .menu-toggle{
         display:flex;
+    }
+
+    .logo-img{
+        height:48px;
     }
 
     nav{
