@@ -127,6 +127,52 @@ if (containerDetalhe) {
 }
 
 
+// ---------- Rodapé: ano automático ----------
+
+const anoAtual = document.getElementById("ano-atual");
+if (anoAtual) {
+    anoAtual.textContent = new Date().getFullYear();
+}
+
+
+// ---------- Galeria: lightbox ----------
+
+const galeriaItens = document.querySelectorAll(".galeria-item");
+const lightbox = document.getElementById("lightbox");
+
+if (lightbox && galeriaItens.length) {
+
+    const lightboxImagem = document.getElementById("lightbox-imagem");
+    const lightboxFechar = document.getElementById("lightbox-fechar");
+
+    const abrirLightbox = (item) => {
+        lightboxImagem.src = item.src;
+        lightboxImagem.alt = item.alt;
+        lightbox.classList.add("ativo");
+    };
+
+    const fecharLightbox = () => {
+        lightbox.classList.remove("ativo");
+    };
+
+    galeriaItens.forEach((item) => {
+        item.addEventListener("click", () => abrirLightbox(item));
+    });
+
+    lightboxFechar.addEventListener("click", fecharLightbox);
+
+    // Fecha ao clicar fora da imagem (no fundo escuro)
+    lightbox.addEventListener("click", (evento) => {
+        if (evento.target === lightbox) fecharLightbox();
+    });
+
+    // Fecha ao apertar Esc
+    document.addEventListener("keydown", (evento) => {
+        if (evento.key === "Escape") fecharLightbox();
+    });
+}
+
+
 // ---------- Menu mobile ----------
 
 const menuToggle = document.querySelector('.menu-toggle');
