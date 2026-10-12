@@ -43,16 +43,19 @@ Atualmente, o site conta com:
 
 ## 🛍️ Produtos
 
-O catálogo é alimentado por um arquivo central (`produtos.js`), onde cada produto tem nome, categoria, preço, tamanho, descrição, cores e etiqueta (ex: "Mais vendido", "Exclusivo").
+O catálogo é alimentado por um arquivo central (`produtos.js`). Para cadastrar uma peça, só são obrigatórios **nome, categoria, preço e foto**; tamanho, cores, descrição e etiqueta são opcionais (o site não mostra a linha que estiver faltando).
 
-Atualmente estão cadastrados produtos de **demonstração**, como:
+Produtos cadastrados hoje:
 
-- 🌸 Tapete Floral
-- 🤎 Passadeira Elegance
-- 🧶 Tapete Redondo
-- 🎁 Conjunto Personalizado
+- 🍽️ Centro de Mesa
+- 🧶 Trilho de Mesa
+- 🔴 Sousplat Mesa Posta (jogo com 4 peças)
 
-Esses dados serão substituídos pelos produtos reais assim que estiverem disponíveis. A estrutura já foi pensada para isso: basta adicionar um novo item no `produtos.js` que ele aparece automaticamente no site (Home, catálogo e página de detalhes).
+**Como adicionar um produto novo:**
+
+1. Copie a foto para `assets/images/produtos/`.
+2. Abra o `produtos.js`, copie o bloco modelo que está no topo do arquivo e cole no fim da lista de produtos.
+3. Troque os textos e salve. O produto aparece sozinho na Home (se tiver `destaque: true`), no catálogo e na página de detalhes, e a categoria vira um botão de filtro automaticamente.
 
 ---
 
@@ -143,10 +146,9 @@ O desenvolvimento do Crochê da Paty permitiu praticar conceitos importantes de 
 
 Algumas melhorias planejadas para futuras versões:
 
-* [ ] Adicionar o número real do WhatsApp
-* [ ] Adicionar o link real do Instagram
-* [ ] Substituir os produtos de demonstração pelos produtos reais
-* [ ] Adicionar fotos reais dos produtos e da galeria
+* [ ] Cadastrar os demais produtos reais (tapetes, passadeiras etc.)
+* [ ] Adicionar mais fotos reais na galeria e uma foto real para o fundo da página inicial
+* [ ] Publicar o site (GitHub Pages)
 * [ ] Avaliar um bot de atendimento no WhatsApp para agilizar pedidos
 
 ---

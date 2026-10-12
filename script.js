@@ -4,9 +4,9 @@
 // Cuida do menu mobile (hamburger), da renderização
 // dos cards de produto (Home e catálogo), do filtro
 // por categoria e da página dinâmica de produto,
-// todos usando os dados de produtos.js.
-// A lightbox da galeria será adicionada aqui em uma
-// etapa futura.
+// todos usando os dados de produtos.js. Também cuida
+// dos links de WhatsApp/Instagram, do ano no rodapé
+// e da lightbox da galeria.
 // ==================================================
 
 
@@ -20,13 +20,13 @@ const LINK_INSTAGRAM = "https://www.instagram.com/marques.patriciamarques/";
 
 // Monta o link do WhatsApp com uma mensagem já preenchida com o nome do produto
 function gerarLinkWhatsApp(produto) {
-    const mensagem = `Olá! Vi o ${produto.nome} no site Crochê da Paty e gostaria de saber mais informações. 😊`;
+    const mensagem = `Olá! Vi o ${produto.nome} no site Crochê da Paty e gostaria de saber mais informações.`;
     return `https://wa.me/${WHATSAPP_NUMERO}?text=${encodeURIComponent(mensagem)}`;
 }
 
 // Monta o link do WhatsApp com uma mensagem genérica (usado no footer e na página de contato)
 function gerarLinkWhatsAppGeral() {
-    const mensagem = "Olá! Vim pelo site Crochê da Paty e gostaria de saber mais informações. 😊";
+    const mensagem = "Olá! Vim pelo site Crochê da Paty e gostaria de saber mais informações.";
     return `https://wa.me/${WHATSAPP_NUMERO}?text=${encodeURIComponent(mensagem)}`;
 }
 
@@ -54,13 +54,18 @@ function criarCardProduto(produto) {
         ? `<div class="etiqueta">${produto.etiqueta}</div>`
         : "";
 
+    // A descrição é opcional: se o produto não tiver, o card simplesmente não mostra essa linha
+    const descricaoHtml = produto.descricao
+        ? `<p>${produto.descricao}</p>`
+        : "";
+
     return `
         <div class="card">
             ${etiquetaHtml}
-            <img src="${produto.imagem}" alt="${produto.nome}">
+            <img src="${produto.imagem}" alt="${produto.nome}" loading="lazy">
             <div class="card-content">
                 <h3>${produto.nome}</h3>
-                <p>${produto.descricao}</p>
+                ${descricaoHtml}
                 <div class="preco">${produto.preco}</div>
                 <a class="btn" href="produto.html?id=${produto.id}">Ver detalhes</a>
             </div>
@@ -104,7 +109,8 @@ function nomeCategoria(categoria) {
     if (NOMES_CATEGORIAS[categoria]) {
         return NOMES_CATEGORIAS[categoria];
     }
-    return categoria.replace(/(^|\s)\S/g, (letra) => letra.toUpperCase());
+    // Categoria nova: troca hífen por espaço e deixa cada palavra com inicial maiúscula
+    return categoria.replace(/-/g, " ").replace(/(^|\s)\S/g, (letra) => letra.toUpperCase());
 }
 
 // Monta os botões de filtro com base nas categorias que existem hoje em produtos.js
@@ -155,7 +161,21 @@ if (containerDetalhe) {
     if (produto) {
 
         const disponibilidade = produto.status === "disponivel" ? "Disponível" : "Indisponível no momento";
-        const personalizavel = produto.personalizado ? "Sim, esta peça aceita personalização." : "Esta peça não aceita personalização.";
+
+        // Campos opcionais: cada linha só aparece se o produto tiver essa informação
+        const descricaoHtml = produto.descricao ? `<p>${produto.descricao}</p>` : "";
+        const tamanhoHtml = produto.tamanho ? `<p><strong>Tamanho:</strong> ${produto.tamanho}</p>` : "";
+        const coresHtml = produto.cores && produto.cores.length
+            ? `<p><strong>Cores disponíveis:</strong> ${produto.cores.join(", ")}</p>`
+            : "";
+
+        // personalizado: true = aceita, false = não aceita, sem o campo = não mostra nada
+        let personalizavelHtml = "";
+        if (produto.personalizado === true) {
+            personalizavelHtml = "<p>Sim, esta peça aceita personalização.</p>";
+        } else if (produto.personalizado === false) {
+            personalizavelHtml = "<p>Esta peça não aceita personalização.</p>";
+        }
 
         containerDetalhe.innerHTML = `
             <img src="${produto.imagem}" alt="${produto.nome}">
@@ -163,11 +183,11 @@ if (containerDetalhe) {
                 <p class="detalhe-categoria">${nomeCategoria(produto.categoria)}</p>
                 <h2>${produto.nome}</h2>
                 <div class="preco">${produto.preco}</div>
-                <p>${produto.descricao}</p>
-                <p><strong>Tamanho:</strong> ${produto.tamanho}</p>
-                <p><strong>Cores disponíveis:</strong> ${produto.cores.join(", ")}</p>
+                ${descricaoHtml}
+                ${tamanhoHtml}
+                ${coresHtml}
                 <p><strong>Disponibilidade:</strong> ${disponibilidade}</p>
-                <p>${personalizavel}</p>
+                ${personalizavelHtml}
                 <a class="btn" href="${gerarLinkWhatsApp(produto)}" target="_blank" rel="noopener">Fazer pedido pelo WhatsApp</a>
             </div>
         `;
@@ -176,7 +196,7 @@ if (containerDetalhe) {
 
         containerDetalhe.innerHTML = `
             <p style="text-align:center; width:100%;">
-                Produto não encontrado. <a href="produtos.html" style="color:#b07d52; font-weight:600;">Voltar ao catálogo</a>
+                Produto não encontrado. <a href="produtos.html" style="color:#E8897C; font-weight:600;">Voltar ao catálogo</a>
             </p>
         `;
 
