@@ -10,16 +10,39 @@
 // ==================================================
 
 
-// ---------- WhatsApp ----------
+// ---------- WhatsApp e Instagram ----------
 
 // Número usado nos links de pedido. Formato: 55 + DDD + número, sem espaços/símbolos.
-const WHATSAPP_NUMERO = "[INSERIR NÚMERO DO WHATSAPP]";
+const WHATSAPP_NUMERO = "554998188447";
+
+// Link oficial do Instagram
+const LINK_INSTAGRAM = "https://www.instagram.com/marques.patriciamarques/";
 
 // Monta o link do WhatsApp com uma mensagem já preenchida com o nome do produto
 function gerarLinkWhatsApp(produto) {
     const mensagem = `Olá! Vi o ${produto.nome} no site Crochê da Paty e gostaria de saber mais informações. 😊`;
     return `https://wa.me/${WHATSAPP_NUMERO}?text=${encodeURIComponent(mensagem)}`;
 }
+
+// Monta o link do WhatsApp com uma mensagem genérica (usado no footer e na página de contato)
+function gerarLinkWhatsAppGeral() {
+    const mensagem = "Olá! Vim pelo site Crochê da Paty e gostaria de saber mais informações. 😊";
+    return `https://wa.me/${WHATSAPP_NUMERO}?text=${encodeURIComponent(mensagem)}`;
+}
+
+// Preenche automaticamente todo link marcado com essas classes,
+// então o número e o Instagram só precisam ser trocados aqui em um lugar.
+document.querySelectorAll(".whatsapp-link").forEach((link) => {
+    link.href = gerarLinkWhatsAppGeral();
+    link.target = "_blank";
+    link.rel = "noopener";
+});
+
+document.querySelectorAll(".instagram-link").forEach((link) => {
+    link.href = LINK_INSTAGRAM;
+    link.target = "_blank";
+    link.rel = "noopener";
+});
 
 
 // ---------- Cards de produto ----------
@@ -68,6 +91,40 @@ if (containerCatalogo && typeof listarProdutos === "function") {
 
 // ---------- Filtro por categoria ----------
 
+// Nomes de exibição para as categorias já conhecidas. Uma categoria nova
+// (que não estiver aqui) aparece com a primeira letra de cada palavra maiúscula.
+const NOMES_CATEGORIAS = {
+    "mesa-posta": "Mesa Posta",
+    tapetes: "Tapetes",
+    passadeiras: "Passadeiras",
+    personalizados: "Personalizados"
+};
+
+function nomeCategoria(categoria) {
+    if (NOMES_CATEGORIAS[categoria]) {
+        return NOMES_CATEGORIAS[categoria];
+    }
+    return categoria.replace(/(^|\s)\S/g, (letra) => letra.toUpperCase());
+}
+
+// Monta os botões de filtro com base nas categorias que existem hoje em produtos.js
+function renderizarFiltros() {
+    const container = document.getElementById("filtros");
+    if (!container || typeof obterCategoriasUnicas !== "function") return;
+
+    const categorias = obterCategoriasUnicas();
+
+    let html = `<button class="filtro-btn ativo" data-categoria="todos">Todos</button>`;
+    categorias.forEach((categoria) => {
+        html += `<button class="filtro-btn" data-categoria="${categoria}">${nomeCategoria(categoria)}</button>`;
+    });
+
+    container.innerHTML = html;
+}
+
+renderizarFiltros();
+
+// Precisa ser depois do renderizarFiltros(), já que os botões são criados dinamicamente
 const botoesFiltro = document.querySelectorAll(".filtro-btn");
 
 botoesFiltro.forEach((botao) => {
@@ -103,7 +160,7 @@ if (containerDetalhe) {
         containerDetalhe.innerHTML = `
             <img src="${produto.imagem}" alt="${produto.nome}">
             <div class="detalhe-info">
-                <p class="detalhe-categoria">${produto.categoria}</p>
+                <p class="detalhe-categoria">${nomeCategoria(produto.categoria)}</p>
                 <h2>${produto.nome}</h2>
                 <div class="preco">${produto.preco}</div>
                 <p>${produto.descricao}</p>

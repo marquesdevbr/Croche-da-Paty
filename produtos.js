@@ -12,6 +12,52 @@
 // ==================================================
 
 const produtos = [
+    // ---------- PRODUTOS REAIS ----------
+    {
+        id: "centro-de-mesa",
+        nome: "Centro de Mesa",
+        categoria: "mesa-posta",
+        preco: "R$ 80,00",
+        imagem: "assets/images/produtos/centro-de-mesa.jpg",
+        tamanho: "Diâmetro de 0,77m",
+        descricao: "Peça artesanal para decorar a mesa.",
+        cores: ["Preto", "Amarelo mostarda"],
+        etiqueta: "Novo",
+        destaque: true,
+        status: "disponivel",
+        personalizado: false
+    },
+    {
+        id: "trilho-de-mesa",
+        nome: "Trilho de Mesa",
+        categoria: "mesa-posta",
+        preco: "R$ 80,00",
+        imagem: "assets/images/produtos/trilho-de-mesa.jpg",
+        tamanho: "0,70m x 0,40m",
+        descricao: "Trilho artesanal para compor a decoração da mesa.",
+        cores: ["Cru", "Vermelho"],
+        etiqueta: null,
+        destaque: true,
+        status: "disponivel",
+        personalizado: false
+    },
+
+    {
+        id: "sousplat-mesa-posta",
+        nome: "Sousplat Mesa Posta",
+        categoria: "mesa-posta",
+        preco: "R$ 120,00 (jogo com 4 peças)",
+        imagem: "assets/images/produtos/sousplat.jpg",
+        tamanho: "Diâmetro de 0,38m (cada peça)",
+        descricao: "Jogo de sousplats artesanais para mesa posta.",
+        cores: ["Vermelho"],
+        etiqueta: "Destaque",
+        destaque: true,
+        status: "disponivel",
+        personalizado: false
+    },
+
+    // ---------- PRODUTOS DE DEMONSTRAÇÃO (trocar pelos reais aos poucos) ----------
     {
         id: "tapete-floral",
         nome: "Tapete Floral",
@@ -92,4 +138,11 @@ function filtrarPorCategoria(categoria) {
         return produtos;
     }
     return produtos.filter((produto) => produto.categoria === categoria);
+}
+
+// Retorna a lista de categorias que realmente existem hoje nos produtos cadastrados,
+// na ordem em que aparecem (sem repetir). Usada para gerar os botões de filtro.
+function obterCategoriasUnicas() {
+    const categorias = produtos.map((produto) => produto.categoria);
+    return [...new Set(categorias)];
 }

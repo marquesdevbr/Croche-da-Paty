@@ -29,7 +29,7 @@ Além disso, o projeto serve como oportunidade para colocar em prática conhecim
 Atualmente, o site conta com:
 
 - 🧶 Identidade visual própria, com logo oficial e favicon
-- 🏠 Site dividido em múltiplas páginas (Início, Produtos, Sobre, Galeria, Contato)
+- 🏠 Site dividido em múltiplas páginas (Início, Produtos, Galeria, Contato)
 - 📱 Menu mobile com botão hamburger
 - 🛍️ Catálogo de produtos com filtro por categoria (Tapetes, Passadeiras, Decoração, Personalizados)
 - 📄 Página dinâmica de produto (`produto.html?id=...`), que carrega os dados a partir de um único arquivo
@@ -87,7 +87,6 @@ Crochê da Paty/
 ├── index.html          → Página inicial
 ├── produtos.html        → Catálogo com filtro por categoria
 ├── produto.html         → Página dinâmica de detalhes do produto
-├── sobre.html           → História da marca e processo
 ├── galeria.html          → Galeria de fotos com lightbox
 ├── contato.html          → Contato (WhatsApp e Instagram)
 │
@@ -146,7 +145,6 @@ Algumas melhorias planejadas para futuras versões:
 
 * [ ] Adicionar o número real do WhatsApp
 * [ ] Adicionar o link real do Instagram
-* [ ] Adicionar a história real da Paty na página Sobre
 * [ ] Substituir os produtos de demonstração pelos produtos reais
 * [ ] Adicionar fotos reais dos produtos e da galeria
 * [ ] Avaliar um bot de atendimento no WhatsApp para agilizar pedidos
