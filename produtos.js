@@ -1,18 +1,47 @@
 // ==================================================
 // CROCHÊ DA PATY — produtos.js
 // ==================================================
-// Dados de DEMONSTRAÇÃO dos produtos, apenas para
-// desenvolvimento. Serão substituídos pelos produtos
-// reais quando estiverem disponíveis.
+// Aqui ficam os produtos do site e as funções que o
+// script.js usa para montar os cards (Início, Produtos)
+// e a página de detalhes do produto.
 //
-// Também ficam aqui as funções de acesso aos dados,
-// usadas pelo script.js para montar os cards nas
-// páginas (Início, Produtos e, futuramente, a página
-// de detalhes do produto).
+// ------------------------------------------------
+// COMO ADICIONAR UM PRODUTO NOVO
+// ------------------------------------------------
+// 1. Copie a foto para a pasta assets/images/produtos/
+// 2. Copie o bloco modelo abaixo e cole no FIM da lista
+//    de produtos (antes do "];"), com uma vírgula depois
+//    do bloco anterior.
+// 3. Troque os textos. Só estes 4 são obrigatórios:
+//    nome, categoria, preco e imagem.
+//    O resto pode apagar à vontade: o site simplesmente
+//    não mostra a linha que estiver faltando.
+//
+//    {
+//        nome: "Nome da peça",
+//        categoria: "mesa-posta",
+//        preco: "R$ 00,00",
+//        imagem: "assets/images/produtos/nome-da-foto.jpg",
+//        tamanho: "70 cm x 40 cm",
+//        cores: ["Vermelho", "Cru"],
+//        descricao: "Texto curto sobre a peça.",
+//        etiqueta: "Novo",
+//        destaque: true
+//    },
+//
+// CATEGORIAS: use mesa-posta, tapetes, passadeiras ou
+// personalizados. Para uma categoria nova, basta escrever
+// o nome (ex: "almofadas") e o botão de filtro aparece
+// sozinho na página de produtos.
+//
+// DESTAQUE: destaque: true faz o produto aparecer também
+// na página inicial.
+//
+// ETIQUETA (opcional): "Novo", "Mais vendido", "Destaque"
+// ou "Exclusivo". Não precisa colocar em todos.
 // ==================================================
 
 const produtos = [
-    // ---------- PRODUTOS REAIS ----------
     {
         id: "centro-de-mesa",
         nome: "Centro de Mesa",
@@ -24,7 +53,6 @@ const produtos = [
         cores: ["Preto", "Amarelo mostarda"],
         etiqueta: "Novo",
         destaque: true,
-        status: "disponivel",
         personalizado: false
     },
     {
@@ -36,12 +64,9 @@ const produtos = [
         tamanho: "0,70m x 0,40m",
         descricao: "Trilho artesanal para compor a decoração da mesa.",
         cores: ["Cru", "Vermelho"],
-        etiqueta: null,
         destaque: true,
-        status: "disponivel",
         personalizado: false
     },
-
     {
         id: "sousplat-mesa-posta",
         nome: "Sousplat Mesa Posta",
@@ -53,69 +78,34 @@ const produtos = [
         cores: ["Vermelho"],
         etiqueta: "Destaque",
         destaque: true,
-        status: "disponivel",
         personalizado: false
-    },
-
-    // ---------- PRODUTOS DE DEMONSTRAÇÃO (trocar pelos reais aos poucos) ----------
-    {
-        id: "tapete-floral",
-        nome: "Tapete Floral",
-        categoria: "tapetes",
-        preco: "R$ 95,00",
-        imagem: "https://images.unsplash.com/photo-1505693416388-ac5ce068fe85?auto=format&fit=crop&w=800&q=80",
-        tamanho: "0,90m x 0,60m",
-        descricao: "Ideal para sala ou quarto.",
-        cores: ["Rosa", "Bege", "Branco"],
-        etiqueta: "Mais vendido",
-        destaque: true,
-        status: "disponivel",
-        personalizado: false
-    },
-    {
-        id: "passadeira-elegance",
-        nome: "Passadeira Elegance",
-        categoria: "passadeiras",
-        preco: "R$ 140,00",
-        imagem: "https://images.unsplash.com/photo-1499933374294-4584851497cc?auto=format&fit=crop&w=800&q=80",
-        tamanho: "1,50m x 0,50m",
-        descricao: "Produção artesanal.",
-        cores: ["Bege", "Marrom"],
-        etiqueta: null,
-        destaque: true,
-        status: "disponivel",
-        personalizado: false
-    },
-    {
-        id: "tapete-redondo",
-        nome: "Tapete Redondo",
-        categoria: "tapetes",
-        preco: "R$ 120,00",
-        imagem: "https://images.unsplash.com/photo-1600166898405-da9535204843?auto=format&fit=crop&w=800&q=80",
-        tamanho: "Diâmetro de 0,80m",
-        descricao: "Disponível em várias cores.",
-        cores: ["Rosa", "Creme", "Marrom"],
-        etiqueta: null,
-        destaque: true,
-        status: "disponivel",
-        personalizado: false
-    },
-    {
-        id: "conjunto-personalizado",
-        nome: "Conjunto Personalizado",
-        categoria: "personalizados",
-        preco: "Sob consulta",
-        imagem: "https://images.unsplash.com/photo-1544816155-12df9643f363?auto=format&fit=crop&w=800&q=80",
-        tamanho: "Sob medida",
-        descricao: "Criado especialmente para o seu espaço.",
-        cores: ["Sob consulta"],
-        etiqueta: "Exclusivo",
-        destaque: true,
-        status: "disponivel",
-        personalizado: true
     }
 ];
 
+
+// ---------- Valores padrão ----------
+
+// Transforma "Trilho de Mesa" em "trilho-de-mesa" (sem acento, sem espaço).
+// É o id usado no endereço da página do produto: produto.html?id=trilho-de-mesa
+function criarId(nome) {
+    return nome
+        .toLowerCase()
+        .normalize("NFD")
+        .replace(/[̀-ͯ]/g, "")
+        .replace(/[^a-z0-9]+/g, "-")
+        .replace(/^-+|-+$/g, "");
+}
+
+// Completa o que o produto não trouxe, para cadastrar só o essencial
+produtos.forEach((produto) => {
+    if (!produto.id) produto.id = criarId(produto.nome);
+    if (!produto.status) produto.status = "disponivel";
+    if (!produto.preco) produto.preco = "Consulte o valor";
+    if (!produto.etiqueta) produto.etiqueta = null;
+});
+
+
+// ---------- Funções de acesso aos produtos ----------
 
 // Retorna todos os produtos
 function listarProdutos() {
@@ -127,7 +117,7 @@ function listarDestaques() {
     return produtos.filter((produto) => produto.destaque);
 }
 
-// Retorna um produto pelo id (será usado na página de detalhes futuramente)
+// Retorna um produto pelo id (usado na página de detalhes)
 function buscarProdutoPorId(id) {
     return produtos.find((produto) => produto.id === id);
 }
