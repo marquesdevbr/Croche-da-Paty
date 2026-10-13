@@ -160,6 +160,13 @@ if (containerDetalhe) {
 
     if (produto) {
 
+        // O título da aba (e a descrição para o Google) passam a mostrar o nome da peça
+        document.title = `${produto.nome} — Crochê da Paty`;
+        const metaDescricao = document.querySelector('meta[name="description"]');
+        if (metaDescricao) {
+            metaDescricao.setAttribute("content", `${produto.nome}: peça de crochê feita à mão pela Crochê da Paty. Peça pelo WhatsApp.`);
+        }
+
         const disponibilidade = produto.status === "disponivel" ? "Disponível" : "Indisponível no momento";
 
         // Campos opcionais: cada linha só aparece se o produto tiver essa informação

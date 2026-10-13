@@ -1,93 +1,126 @@
-<!DOCTYPE html>
+<!doctype html>
 <html lang="pt-BR">
-<head>
-<meta charset="UTF-8">
-<meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
 
-<title>Crochê da Paty</title>
-<link rel="icon" type="image/png" href="assets/icons/favicon.png">
+    <title>Crochê da Paty | Peças de crochê feitas à mão</title>
+    <link rel="icon" type="image/png" href="assets/icons/favicon.png" />
+    <meta
+      name="description"
+      content="Peças de crochê feitas à mão, com carinho e aconchego. Conheça o catálogo da Crochê da Paty e peça pelo WhatsApp."
+    />
+    <link
+      rel="canonical"
+      href="https://marquesdevbr.github.io/Croche-da-Paty/"
+    />
+    <!-- Prévia do link (WhatsApp, Instagram, Facebook) -->
+    <meta property="og:type" content="website" />
+    <meta property="og:site_name" content="Crochê da Paty" />
+    <meta property="og:locale" content="pt_BR" />
+    <meta
+      property="og:title"
+      content="Crochê da Paty | Peças de crochê feitas à mão"
+    />
+    <meta
+      property="og:description"
+      content="Peças de crochê feitas à mão, com carinho e aconchego. Conheça o catálogo da Crochê da Paty e peça pelo WhatsApp."
+    />
+    <meta
+      property="og:url"
+      content="https://marquesdevbr.github.io/Croche-da-Paty/"
+    />
+    <meta
+      property="og:image"
+      content="https://marquesdevbr.github.io/Croche-da-Paty/assets/images/og-image.jpg"
+    />
+    <meta property="og:image:width" content="1200" />
+    <meta property="og:image:height" content="630" />
+    <link rel="preconnect" href="https://fonts.googleapis.com" />
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+    <link
+      href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;600&family=Playfair+Display:wght@700&display=swap"
+      rel="stylesheet"
+    />
+    <link rel="stylesheet" href="style.css" />
+  </head>
 
-<link rel="preconnect" href="https://fonts.googleapis.com">
-<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-<link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;600&family=Playfair+Display:wght@700&display=swap" rel="stylesheet">
-<link rel="stylesheet" href="style.css">
-
-</head>
-
-<body>
-
+  <body>
     <header>
+      <h1 class="logo">
+        <a href="index.html"
+          ><img
+            src="assets/images/logo.png"
+            alt="Crochê da Paty"
+            class="logo-img"
+        /></a>
+      </h1>
 
-        <h1 class="logo"><a href="index.html"><img src="assets/images/logo.png" alt="Crochê da Paty" class="logo-img"></a></h1>
+      <button class="menu-toggle" aria-label="Abrir menu" aria-expanded="false">
+        <span></span>
+        <span></span>
+        <span></span>
+      </button>
 
-
-        <button class="menu-toggle" aria-label="Abrir menu" aria-expanded="false">
-            <span></span>
-            <span></span>
-            <span></span>
-        </button>
-
-        <nav>
-            <a href="index.html">Início</a>
-            <a href="produtos.html">Produtos</a>
-            <a href="galeria.html">Galeria</a>
-            <a href="contato.html">Contato</a>
-        </nav>
-
+      <nav>
+        <a href="index.html">Início</a>
+        <a href="produtos.html">Produtos</a>
+        <a href="galeria.html">Galeria</a>
+        <a href="contato.html">Contato</a>
+      </nav>
     </header>
 
     <section class="hero">
+      <div>
+        <h2>Peças de Crochê Feitas à Mão</h2>
 
-        <div>
+        <p>
+          Cada peça é produzida artesanalmente com carinho para deixar sua casa
+          ainda mais bonita e aconchegante.
+        </p>
 
-            <h2>Peças de Crochê Feitas à Mão</h2>
-
-            <p>
-                Cada peça é produzida artesanalmente com carinho para deixar sua casa ainda mais bonita e aconchegante.
-            </p>
-
-            <a class="btn" href="produtos.html">Ver Catálogo</a>
-
-        </div>
-
+        <a class="btn" href="produtos.html">Ver Catálogo</a>
+      </div>
     </section>
 
     <section>
+      <h2 class="titulo">Produtos em Destaque</h2>
 
-        <h2 class="titulo">Produtos em Destaque</h2>
-
-        <!-- Preenchido dinamicamente pelo script.js, com os dados de produtos.js -->
-        <div class="produtos" id="produtos-destaque"></div>
-
+      <!-- Preenchido dinamicamente pelo script.js, com os dados de produtos.js -->
+      <div class="produtos" id="produtos-destaque"></div>
     </section>
 
-    <section style="background:white; text-align:center;">
+    <section style="background: white; text-align: center">
+      <h2 class="titulo">Feito com Amor ❤️</h2>
 
-        <h2 class="titulo">Feito com Amor ❤️</h2>
-
-        <p style="max-width:700px;margin:auto;font-size:18px;line-height:1.8;">
-            Cada tapete é confeccionado manualmente, ponto por ponto, utilizando materiais de qualidade e muito carinho. Nosso objetivo é levar beleza, conforto e exclusividade para o seu lar.
-        </p>
-
+      <p
+        style="
+          max-width: 700px;
+          margin: auto;
+          font-size: 18px;
+          line-height: 1.8;
+        "
+      >
+        Cada peça é confeccionada manualmente, ponto por ponto, utilizando
+        materiais de qualidade e muito carinho. Nosso objetivo é levar beleza,
+        conforto e exclusividade para o seu lar.
+      </p>
     </section>
 
     <footer>
+      <h2>🧶 Crochê da Paty</h2>
 
-        <h2>🧶 Crochê da Paty</h2>
+      <p>Feito à mão com carinho.</p>
 
-        <p>Feito à mão com carinho.</p>
+      <p style="margin-top: 10px">
+        <a href="#" class="whatsapp-link">WhatsApp</a> •
+        <a href="#" class="instagram-link">Instagram</a>
+      </p>
 
-        <p style="margin-top:10px;">
-            <a href="#" class="whatsapp-link">WhatsApp</a> •
-            <a href="#" class="instagram-link">Instagram</a>
-        </p>
-
-        <p class="footer-copy">© <span id="ano-atual"></span> Crochê da Paty</p>
-
+      <p class="footer-copy">© <span id="ano-atual"></span> Crochê da Paty</p>
     </footer>
 
     <script src="produtos.js"></script>
     <script src="script.js"></script>
-
-</body>
+  </body>
 </html>
