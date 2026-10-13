@@ -31,11 +31,13 @@ Atualmente, o site conta com:
 - 🧶 Identidade visual própria, com logo oficial e favicon
 - 🏠 Site dividido em múltiplas páginas (Início, Produtos, Galeria, Contato)
 - 📱 Menu mobile com botão hamburger
-- 🛍️ Catálogo de produtos com filtro por categoria (Tapetes, Passadeiras, Decoração, Personalizados)
+- 🛍️ Catálogo de produtos com filtros de categoria gerados automaticamente a partir dos produtos cadastrados
 - 📄 Página dinâmica de produto (`produto.html?id=...`), que carrega os dados a partir de um único arquivo
 - 💬 Botão de pedido pelo WhatsApp, com mensagem preenchida automaticamente com o nome do produto
 - 🖼️ Galeria com lightbox (clique para ampliar imagem) em JavaScript puro
 - 📅 Ano do copyright no rodapé gerado automaticamente
+- 🔎 SEO básico: descrição em cada página, prévia do link ao compartilhar (WhatsApp/Instagram) e `sitemap.xml`
+- 🧭 Página 404 personalizada para endereços que não existem
 - 🎨 Design com foco em simplicidade, elegância e aconchego
 - ♻️ Estrutura pensada para facilitar manutenção e adição de novos produtos
 
@@ -92,6 +94,8 @@ Crochê da Paty/
 ├── produto.html         → Página dinâmica de detalhes do produto
 ├── galeria.html          → Galeria de fotos com lightbox
 ├── contato.html          → Contato (WhatsApp e Instagram)
+├── 404.html              → Página de erro (endereço que não existe)
+├── sitemap.xml           → Mapa do site para o Google
 │
 ├── style.css             → Estilos do site inteiro
 ├── script.js              → Menu mobile, cards, filtro, lightbox, WhatsApp
@@ -122,6 +126,8 @@ cd Croche-da-Paty
 
 Depois, basta abrir o arquivo `index.html` em um navegador.
 
+O site publicado está em: https://marquesdevbr.github.io/Croche-da-Paty/
+
 Também é possível utilizar uma extensão como o **Live Server** no Visual Studio Code para executar o projeto durante o desenvolvimento.
 
 ---
@@ -148,7 +154,6 @@ Algumas melhorias planejadas para futuras versões:
 
 * [ ] Cadastrar os demais produtos reais (tapetes, passadeiras etc.)
 * [ ] Adicionar mais fotos reais na galeria e uma foto real para o fundo da página inicial
-* [ ] Publicar o site (GitHub Pages)
 * [ ] Avaliar um bot de atendimento no WhatsApp para agilizar pedidos
 
 ---

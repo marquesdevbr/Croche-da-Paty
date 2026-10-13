@@ -1,0 +1,82 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+<!--
+    O GitHub Pages mostra esta página em QUALQUER endereço que não existir, e o endereço
+    pode ter várias "pastas" (ex: .../Croche-da-Paty/abc/def). Por isso o <base> abaixo:
+    ele faz todos os links e arquivos (style.css, logo, menu) partirem sempre da raiz do site.
+-->
+<base href="https://marquesdevbr.github.io/Croche-da-Paty/">
+
+<title>Página não encontrada — Crochê da Paty</title>
+<link rel="icon" type="image/png" href="assets/icons/favicon.png">
+
+<!-- Página de erro: não deve aparecer nas buscas do Google -->
+<meta name="robots" content="noindex">
+
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;600&family=Playfair+Display:wght@700&display=swap" rel="stylesheet">
+<link rel="stylesheet" href="style.css">
+
+</head>
+
+<body>
+
+    <header>
+
+        <h1 class="logo"><a href="index.html"><img src="assets/images/logo.png" alt="Crochê da Paty" class="logo-img"></a></h1>
+
+
+        <button class="menu-toggle" aria-label="Abrir menu" aria-expanded="false">
+            <span></span>
+            <span></span>
+            <span></span>
+        </button>
+
+        <nav>
+            <a href="index.html">Início</a>
+            <a href="produtos.html">Produtos</a>
+            <a href="galeria.html">Galeria</a>
+            <a href="contato.html">Contato</a>
+        </nav>
+
+    </header>
+
+    <section style="text-align:center; min-height:60vh;">
+
+        <p style="font-family:'Playfair Display',serif; font-size:90px; color:#E8897C; line-height:1; margin:0 auto 10px;">404</p>
+
+        <h2 class="titulo" style="margin-bottom:20px;">Página não encontrada</h2>
+
+        <p style="max-width:520px; margin:0 auto; font-size:18px; line-height:1.8;">
+            O endereço que você tentou abrir não existe ou mudou de lugar. Vamos voltar para as peças?
+        </p>
+
+        <a class="btn" href="index.html" style="margin:35px 8px 0;">Voltar ao início</a>
+        <a class="btn" href="produtos.html" style="margin:35px 8px 0;">Ver produtos</a>
+
+    </section>
+
+    <footer>
+
+        <h2>🧶 Crochê da Paty</h2>
+
+        <p>Feito à mão com carinho.</p>
+
+        <p style="margin-top:10px;">
+            <a href="#" class="whatsapp-link">WhatsApp</a> •
+            <a href="#" class="instagram-link">Instagram</a>
+        </p>
+
+        <p class="footer-copy">© <span id="ano-atual"></span> Crochê da Paty</p>
+
+    </footer>
+
+    <script src="script.js"></script>
+
+</body>
+</html>
